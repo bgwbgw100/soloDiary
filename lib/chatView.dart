@@ -26,6 +26,7 @@ class _MyAppState extends State<MyApp> {
         showSelectedLabels: false,
         onTap: (i){
           setState(() {
+            print('hihihihi');
             tab = i;
           });
         }, items: [
