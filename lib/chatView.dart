@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class OneDay extends StatefulWidget {
+  const OneDay({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<OneDay> createState() => _OneDayState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _OneDayState extends State<OneDay> {
   // This widget is the root of your application.
 
   var tab = 0;
