@@ -29,7 +29,7 @@ class _OneDayState extends State<OneDay> {
 
       ),
       // body: BackTwo(),
-      bottomNavigationBar: BottomNavigationBar(
+/*      bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: false,
         showSelectedLabels: false,
         onTap: (i){
@@ -40,7 +40,7 @@ class _OneDayState extends State<OneDay> {
         BottomNavigationBarItem(icon: Icon(Icons.calendar_month_outlined), label: 'calendar'),
         BottomNavigationBarItem(icon: Icon(Icons.chat_bubble_outlined), label: 'chat')
       ],
-      ),
+      ),*/
     );
   }
 }
