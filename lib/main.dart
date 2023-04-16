@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'chatView.dart';
 
+
 void main() {
   runApp(MaterialApp(
       home: MyApp()
@@ -8,17 +9,17 @@ void main() {
   );
 }
 
-/*
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  
-  @override
-  Widget build(BuildContext context) {
-    return
-  }
-}
+//
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return
+//   }
+// }
 
-class MyHomePage extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,40 +37,117 @@ class MyHomePage extends StatelessWidget {
                 builder: (BuildContext context) {
                   return AlertDialog(
                     content: Container(
-                      height: 120,
-                      width: 200,
+                      color: Colors.white,
+                      height: 180,
+                      width: 300,
                       child: Column(
                         children: [
-                          Text('로그인을 해주세요 !',),
+                          Text('로그인을 해주세요 !',style: TextStyle(fontFamily: 'LeferiPoint',fontWeight: FontWeight.bold)),
+                          Spacer(flex: 1,),
                           Row(
                             children: [
-                              TextButton(
-                                  onPressed: (){
-                              },
-                                  child:Image.asset('images/kakaoLogin.png',height: 40,width: 100,) ),
-                              TextButton(
-                                  onPressed: (){
-                                  },
-                                  child:Image.asset('images/googleLogin.png',height: 40,width: 100,) )
+                              Spacer(flex: 5,),
+                              GestureDetector(
+                                  child: Container(
+                                      width:100,
+                                      height:50,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.white,
+                                          width: 2
+                                        ),
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.black,
+                                        image: DecorationImage(
+                                            image:AssetImage("/naverLogin.png"),
+                                            fit:BoxFit.fill
+                                        ),
+                                      )
+                                  ),onTap:(){
+                                print("you clicked me");
+                              }
+                              ),
+                              Spacer(flex: 3,),
+                              GestureDetector(
+                                  child: Container(
+                                      width:100,
+                                      height:50,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: Colors.white,
+                                            width: 2
+                                        ),
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.black,
+                                        image: DecorationImage(
+                                            image:AssetImage("/KaKaoLogin.png"),
+                                            fit:BoxFit.fill
+                                        ),
+                                      )
+                                  ),onTap:(){
+                                print("you clicked me");
+                              }
+                              ),
+                              Spacer(flex: 5,),
                             ],
                           ),
+                          Spacer(flex: 1,),
                           Row(
                             children: [
-                              TextButton(
-                                  onPressed: (){
-                                  },
-                                  child:Image.asset('images/facebookLogin.png',height: 50,width: 100,) ),
-                              TextButton(
-                                  onPressed: (){
-                                  },
-                                  child:Image.asset('images/naverLogin.png',height: 50,width: 100,) ),
+                              Spacer(flex: 5,),
+                              GestureDetector(
+                                  child: Container(
+                                      width:100,
+                                      height:50,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: Colors.white,
+                                            width: 2
+                                        ),
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.black,
+                                        image: DecorationImage(
+                                            image:AssetImage("/googleLogin.png"),
+                                            fit:BoxFit.fill
+                                        ),
+                                      )
+                                  ),onTap:(){
+                                print("you clicked me");
+                              }
+                              ),
+                              Spacer(flex: 3,),
+                              GestureDetector(
+                                  child: Container(
+
+                                      width:100,
+                                      height:50,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: Colors.white,
+                                            width: 2
+                                        ),
+                                        borderRadius: BorderRadius.circular(10),
+                                          color: Colors.black,
+                                          image: DecorationImage(
+                                              image:AssetImage("/facebookLogin.png"),
+                                              fit:BoxFit.fill
+                                          ),
+
+                                      )
+                                  ),onTap:(){
+                                print("you clicked me");
+                              }
+                              ),
+                              Spacer(flex: 5,),
                             ],
-                          )
+                          ),
+                          Spacer(flex: 2,)
                         ],
                       ),
                     ),
                     actions: [
                       TextButton(onPressed: (){
+                        Navigator.pop(context);
                         print('창꺼짐');
                       }, child:
                           Text('취소')
@@ -85,4 +163,3 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-*/

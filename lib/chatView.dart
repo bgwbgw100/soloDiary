@@ -1,115 +1,115 @@
 import 'package:flutter/material.dart';
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  // This widget is the root of your application.
-
-  var tab = 0;
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      /*    appBar: AppBar(
-        backgroundColor: Color(0xffccadde),
-      ),*/
-      //  body:ChatView(),
-      body:BackGround(),
-      bottomNavigationBar: BottomNavigationBar(
-        showUnselectedLabels: false,
-        showSelectedLabels: false,
-        onTap: (i){
-          setState(() {
-            print('hihihihi');
-            tab = i;
-          });
-        }, items: [
-        BottomNavigationBarItem(icon: Icon(Icons.calendar_month_outlined), label: 'calendar'),
-        BottomNavigationBarItem(icon: Icon(Icons.chat_bubble_outlined), label: 'chat')
-      ],
-      ),
-    );
-  }
-}
-
-class BackGround extends StatefulWidget {
-  const BackGround({Key? key}) : super(key: key);
-
-  @override
-  State<BackGround> createState() => _BackGroundState();
-}
-
-class _BackGroundState extends State<BackGround> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-              // colors: [Color(0xffcdb4db),Color(0xffffafcc),Color(0xffffc8dd),Color(0xffbde0fe),Color(0xffa2d2ff)],
-              //  colors: [Color(0xff03045e),Color(0xff0077b6),Color(0xff00b4d8),Color(0xff90e0ef),Color(0xffcaf0f8)],
-              //   colors: [Color(0xff735d78),Color(0xffb392ac),Color(0xffd1b3c4),Color(0xffe8c2ca),Color(0xfff7d1cd)],
-              //   colors: [Color(0xffabc4ff),Color(0xffb6ccfe),Color(0xffccdbfd),Color(0xffd7e3fc),Color(0xffedf2fb)],
-              //  colors: [Color(0xff71a5de),Color(0xff83b0e1),Color(0xffaecbeb),Color(0xffe1ecf7),Color(0xfff8f9fb)],
-              //    colors: [Color(0xffcdb4db),Color(0xffffafcc),Color(0xffffc8dd),Color(0xffbde0fe),Color(0xffa2d2ff),Color(0xff71a5de),Color(0xff83b0e1),Color(0xffaecbeb),Color(0xffe1ecf7),Color(0xfff8f9fb)],
-              colors: [Color(0xffcdb4db),Color(0xffffafcc),Color(0xffffc8dd),Color(0xffbde0fe),Color(0xffa2d2ff),Color(0xffe1ecf7),Color(0xfff8f9fb)],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              // stops: [0,0.3,0.5,0.7,1]
-              //   stops: [0,0.2,0.4,0.6,1]
-              // stops: [0,0.2,0.4,0.6,0.7,0.75,0.8,0.85,0.9,1]
-            )
-        ),
-        child: Column(
-          children: [
-            Expanded(
-                flex: 1,
-                child: RoundBorder()),
-            Container(
-              margin: EdgeInsets.all(0),
-              height: 60,
-              child: InputField(),
-            )
-          ],
-        )
-    );
-  }
-}
-
-class RoundBorder extends StatefulWidget {
-  const RoundBorder({Key? key}) : super(key: key);
-
-
-  @override
-  State<RoundBorder> createState() => _RoundBorderState();
-}
-
-class _RoundBorderState extends State<RoundBorder> {
-  @override
-  Widget build(BuildContext context) {
-
-    print("asdf");
-
-    return Container(
-      margin:  EdgeInsets.fromLTRB(20, 70, 20, 0),
-      padding:  EdgeInsets.fromLTRB(20, 30, 20, 0),
-      decoration: BoxDecoration(
-          color: Color(0xfff8f9fb),
-          border: Border(),
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30),
-              topRight: Radius.circular(30)
-          )
-      ),
-      child: ChatView(),
-    );
-  }
-}
+// class MyApp extends StatefulWidget {
+//   const MyApp({super.key});
+//
+//   @override
+//   State<MyApp> createState() => _MyAppState();
+// }
+//
+// class _MyAppState extends State<MyApp> {
+//   // This widget is the root of your application.
+//
+//   var tab = 0;
+//
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       /*    appBar: AppBar(
+//         backgroundColor: Color(0xffccadde),
+//       ),*/
+//       //  body:ChatView(),
+//       body:BackGround(),
+//       bottomNavigationBar: BottomNavigationBar(
+//         showUnselectedLabels: false,
+//         showSelectedLabels: false,
+//         onTap: (i){
+//           setState(() {
+//             print('hihihihi');
+//             tab = i;
+//           });
+//         }, items: [
+//         BottomNavigationBarItem(icon: Icon(Icons.calendar_month_outlined), label: 'calendar'),
+//         BottomNavigationBarItem(icon: Icon(Icons.chat_bubble_outlined), label: 'chat')
+//       ],
+//       ),
+//     );
+//   }
+// }
+//
+// class BackGround extends StatefulWidget {
+//   const BackGround({Key? key}) : super(key: key);
+//
+//   @override
+//   State<BackGround> createState() => _BackGroundState();
+// }
+//
+// class _BackGroundState extends State<BackGround> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//         decoration: BoxDecoration(
+//             gradient: LinearGradient(
+//               // colors: [Color(0xffcdb4db),Color(0xffffafcc),Color(0xffffc8dd),Color(0xffbde0fe),Color(0xffa2d2ff)],
+//               //  colors: [Color(0xff03045e),Color(0xff0077b6),Color(0xff00b4d8),Color(0xff90e0ef),Color(0xffcaf0f8)],
+//               //   colors: [Color(0xff735d78),Color(0xffb392ac),Color(0xffd1b3c4),Color(0xffe8c2ca),Color(0xfff7d1cd)],
+//               //   colors: [Color(0xffabc4ff),Color(0xffb6ccfe),Color(0xffccdbfd),Color(0xffd7e3fc),Color(0xffedf2fb)],
+//               //  colors: [Color(0xff71a5de),Color(0xff83b0e1),Color(0xffaecbeb),Color(0xffe1ecf7),Color(0xfff8f9fb)],
+//               //    colors: [Color(0xffcdb4db),Color(0xffffafcc),Color(0xffffc8dd),Color(0xffbde0fe),Color(0xffa2d2ff),Color(0xff71a5de),Color(0xff83b0e1),Color(0xffaecbeb),Color(0xffe1ecf7),Color(0xfff8f9fb)],
+//               colors: [Color(0xffcdb4db),Color(0xffffafcc),Color(0xffffc8dd),Color(0xffbde0fe),Color(0xffa2d2ff),Color(0xffe1ecf7),Color(0xfff8f9fb)],
+//               begin: Alignment.topCenter,
+//               end: Alignment.bottomCenter,
+//               // stops: [0,0.3,0.5,0.7,1]
+//               //   stops: [0,0.2,0.4,0.6,1]
+//               // stops: [0,0.2,0.4,0.6,0.7,0.75,0.8,0.85,0.9,1]
+//             )
+//         ),
+//         child: Column(
+//           children: [
+//             Expanded(
+//                 flex: 1,
+//                 child: RoundBorder()),
+//             Container(
+//               margin: EdgeInsets.all(0),
+//               height: 60,
+//               child: InputField(),
+//             )
+//           ],
+//         )
+//     );
+//   }
+// }
+//
+// class RoundBorder extends StatefulWidget {
+//   const RoundBorder({Key? key}) : super(key: key);
+//
+//
+//   @override
+//   State<RoundBorder> createState() => _RoundBorderState();
+// }
+//
+// class _RoundBorderState extends State<RoundBorder> {
+//   @override
+//   Widget build(BuildContext context) {
+//
+//     print("asdf");
+//
+//     return Container(
+//       margin:  EdgeInsets.fromLTRB(20, 70, 20, 0),
+//       padding:  EdgeInsets.fromLTRB(20, 30, 20, 0),
+//       decoration: BoxDecoration(
+//           color: Color(0xfff8f9fb),
+//           border: Border(),
+//           borderRadius: BorderRadius.only(
+//               topLeft: Radius.circular(30),
+//               topRight: Radius.circular(30)
+//           )
+//       ),
+//       child: ChatView(),
+//     );
+//   }
+// }
 
 
 
