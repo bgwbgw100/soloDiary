@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class Intro extends StatelessWidget {
-  const Intro({Key? key}) : super(key: key);
+  var routeContext;
+  var route;
+  Intro({Key? key ,this.routeContext ,this.route} ) : super(key: key);
 
 
   @override
@@ -34,6 +36,10 @@ class Intro extends StatelessWidget {
                         ,side: BorderSide(width: 1.0, color: Colors.blue)
                     ),
                     onPressed: () {
+                      Navigator.push(
+                        routeContext,
+                        MaterialPageRoute(builder: (routeContext) => route),
+                      );
                     }
                 ),
               ),
@@ -43,6 +49,7 @@ class Intro extends StatelessWidget {
                 child: TextButton(
                     child: Text(toDay,style: TextStyle(fontSize: fSize))
                     ,onPressed: (){
+
                 }),
               )
             ],

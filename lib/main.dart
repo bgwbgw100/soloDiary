@@ -15,11 +15,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int tabNumber = CommonStaticVariable.getInstance().getTab();
-    if(tabNumber==0){
-      return Intro();
-    }
-    return Container();
+
+      return Intro(routeContext: context,route:OneDay());
+
+
   }
 }
 
