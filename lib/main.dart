@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'chatView.dart';
+// import 'chatView.dart';
 
 
-void main() {
-  runApp(MaterialApp(
-      home: MyApp()
-  )
-  );
-}
+// void main() {
+//   runApp(MaterialApp(
+//       home: MyApp()
+//   )
+//   );
+// }
 
 //
 // class MyApp extends StatelessWidget {
@@ -19,7 +19,7 @@ void main() {
 //   }
 // }
 
-class MyApp extends StatelessWidget {
+class LoginPopupVC extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
