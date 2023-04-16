@@ -1,11 +1,26 @@
 import 'package:flutter/material.dart';
 import 'chatView.dart';
+import 'commonStaticVariable.dart';
+import 'intro.dart';
 
 void main() {
   runApp(MaterialApp(
       home: MyApp()
-  )
+    )
   );
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    int tabNumber = CommonStaticVariable.getInstance().getTab();
+    if(tabNumber==0){
+      return Intro();
+    }
+    return Container();
+  }
 }
 
 /*
