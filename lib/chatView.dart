@@ -20,7 +20,7 @@ class _OneDayState extends State<OneDay> {
         backgroundColor: Color(0xffccadde),
       ),*/
       //  body:ChatView(),
-   //  body:BackGround(),
+      //  body:BackGround(),
       body:Stack(
         children: <Widget>[
           BackTwo(),
@@ -28,7 +28,7 @@ class _OneDayState extends State<OneDay> {
         ],
 
       ),
-     // body: BackTwo(),
+      // body: BackTwo(),
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: false,
         showSelectedLabels: false,
@@ -57,22 +57,22 @@ class _BackTwoState extends State<BackTwo> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: [
-          Expanded(
-            flex: 1,
-              child: Container(
-                color: Color(0xff123456),
-               // height: 500,
-              )
-          ),
+          children: [
+            Expanded(
+                flex: 1,
+                child: Container(
+                  color: Color(0xff123456),
+                  // height: 500,
+                )
+            ),
 
-          Expanded(
-            flex: 2,
-              child: Container(
-                color: Color(0xfff8f9fb),
-               // height: 200,
+            Expanded(
+                flex: 2,
+                child: Container(
+                  color: Color(0xfff8f9fb),
+                  // height: 200,
                 ))
-              ]
+          ]
 
       ),
     );
@@ -91,7 +91,7 @@ class _BackGroundState extends State<BackGround> {
   @override
   Widget build(BuildContext context) {
     return Container(
- /*       decoration: BoxDecoration(
+      /*       decoration: BoxDecoration(
             gradient: LinearGradient(
               // colors: [Color(0xffcdb4db),Color(0xffffafcc),Color(0xffffc8dd),Color(0xffbde0fe),Color(0xffa2d2ff)],
               //  colors: [Color(0xff03045e),Color(0xff0077b6),Color(0xff00b4d8),Color(0xff90e0ef),Color(0xffcaf0f8)],
@@ -143,7 +143,7 @@ class _RoundBorderState extends State<RoundBorder> {
       margin:  EdgeInsets.fromLTRB(20, 70, 20, 0),
       padding:  EdgeInsets.fromLTRB(20, 30, 20, 0),
       decoration: BoxDecoration(
-         // color: Color(0xfff8f9fb),
+        // color: Color(0xfff8f9fb),
           color: Color(0xffffffff),
           border: Border(),
           borderRadius: BorderRadius.only(
@@ -197,7 +197,7 @@ class _ChatViewState extends State<ChatView> {
                 boxShadow: <BoxShadow>[
                   BoxShadow(
                       color: Color(0xffffc8dd),
-                   //   color: Color(0xff123456),
+                      //   color: Color(0xff123456),
                       blurRadius: 0,
                       offset: Offset(-4, 4)
                   ),
@@ -215,7 +215,7 @@ class _ChatViewState extends State<ChatView> {
             ),
             child: ListTile(
               // title: Text('밤이 되면 생각이 많아진다.', textAlign: TextAlign.justify, style: TextStyle(fontSize: 12, fontFamily: 'LeferiPoint', fontWeight: FontWeight.w700),),
-               title: Text('밤이 되면 생각이 많아진다.', textAlign: TextAlign.justify, style: TextStyle(fontSize: 12),),
+              title: Text('밤이 되면 생각이 많아진다.', textAlign: TextAlign.justify, style: TextStyle(fontSize: 12),),
               //   title: Text('봄봄봄', textAlign: TextAlign.justify, style: TextStyle(fontFamily: )),
               //  trailing: Icon(Icons.arrow_forward_ios),
               onTap: (){
