@@ -20,7 +20,15 @@ class _MyAppState extends State<MyApp> {
         backgroundColor: Color(0xffccadde),
       ),*/
       //  body:ChatView(),
-      body:BackGround(),
+   //  body:BackGround(),
+      body:Stack(
+        children: <Widget>[
+          BackTwo(),
+          BackGround(),
+        ],
+
+      ),
+     // body: BackTwo(),
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: false,
         showSelectedLabels: false,
@@ -37,6 +45,41 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
+class BackTwo extends StatefulWidget {
+  const BackTwo({Key? key}) : super(key: key);
+
+  @override
+  State<BackTwo> createState() => _BackTwoState();
+}
+
+class _BackTwoState extends State<BackTwo> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          Expanded(
+            flex: 1,
+              child: Container(
+                color: Color(0xff123456),
+               // height: 500,
+              )
+          ),
+
+          Expanded(
+            flex: 2,
+              child: Container(
+                color: Color(0xfff8f9fb),
+               // height: 200,
+                ))
+              ]
+
+      ),
+    );
+  }
+}
+
+
 class BackGround extends StatefulWidget {
   const BackGround({Key? key}) : super(key: key);
 
@@ -48,7 +91,7 @@ class _BackGroundState extends State<BackGround> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
+ /*       decoration: BoxDecoration(
             gradient: LinearGradient(
               // colors: [Color(0xffcdb4db),Color(0xffffafcc),Color(0xffffc8dd),Color(0xffbde0fe),Color(0xffa2d2ff)],
               //  colors: [Color(0xff03045e),Color(0xff0077b6),Color(0xff00b4d8),Color(0xff90e0ef),Color(0xffcaf0f8)],
@@ -56,14 +99,16 @@ class _BackGroundState extends State<BackGround> {
               //   colors: [Color(0xffabc4ff),Color(0xffb6ccfe),Color(0xffccdbfd),Color(0xffd7e3fc),Color(0xffedf2fb)],
               //  colors: [Color(0xff71a5de),Color(0xff83b0e1),Color(0xffaecbeb),Color(0xffe1ecf7),Color(0xfff8f9fb)],
               //    colors: [Color(0xffcdb4db),Color(0xffffafcc),Color(0xffffc8dd),Color(0xffbde0fe),Color(0xffa2d2ff),Color(0xff71a5de),Color(0xff83b0e1),Color(0xffaecbeb),Color(0xffe1ecf7),Color(0xfff8f9fb)],
-              colors: [Color(0xffcdb4db),Color(0xffffafcc),Color(0xffffc8dd),Color(0xffbde0fe),Color(0xffa2d2ff),Color(0xffe1ecf7),Color(0xfff8f9fb)],
+           //   colors: [Color(0xffcdb4db),Color(0xffffafcc),Color(0xffffc8dd),Color(0xffbde0fe),Color(0xffa2d2ff),Color(0xffe1ecf7),Color(0xfff8f9fb)],
+              colors: [Color(0xffffafcc), Color(0xffffffff)],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               // stops: [0,0.3,0.5,0.7,1]
               //   stops: [0,0.2,0.4,0.6,1]
               // stops: [0,0.2,0.4,0.6,0.7,0.75,0.8,0.85,0.9,1]
+              stops: [0,0.5]
             )
-        ),
+        ),*/
         child: Column(
           children: [
             Expanded(
@@ -98,7 +143,8 @@ class _RoundBorderState extends State<RoundBorder> {
       margin:  EdgeInsets.fromLTRB(20, 70, 20, 0),
       padding:  EdgeInsets.fromLTRB(20, 30, 20, 0),
       decoration: BoxDecoration(
-          color: Color(0xfff8f9fb),
+         // color: Color(0xfff8f9fb),
+          color: Color(0xffffffff),
           border: Border(),
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30),
@@ -151,13 +197,14 @@ class _ChatViewState extends State<ChatView> {
                 boxShadow: <BoxShadow>[
                   BoxShadow(
                       color: Color(0xffffc8dd),
-                      blurRadius: 5,
-                      offset: Offset(0, 5)
+                   //   color: Color(0xff123456),
+                      blurRadius: 0,
+                      offset: Offset(-4, 4)
                   ),
                   BoxShadow(
                       color: Color(0xffffffff),
-                      blurRadius: 15,
-                      offset: Offset(-5, 0)
+                      blurRadius: 0,
+                      offset: Offset(0, 0)
                   ),
                   BoxShadow(
                       color: Color(0xffffffff),
@@ -167,7 +214,8 @@ class _ChatViewState extends State<ChatView> {
                 ]
             ),
             child: ListTile(
-              title: Text('하루 한말 할거야', textAlign: TextAlign.justify, style: TextStyle(fontSize: 12),),
+              // title: Text('밤이 되면 생각이 많아진다.', textAlign: TextAlign.justify, style: TextStyle(fontSize: 12, fontFamily: 'LeferiPoint', fontWeight: FontWeight.w700),),
+               title: Text('밤이 되면 생각이 많아진다.', textAlign: TextAlign.justify, style: TextStyle(fontSize: 12),),
               //   title: Text('봄봄봄', textAlign: TextAlign.justify, style: TextStyle(fontFamily: )),
               //  trailing: Icon(Icons.arrow_forward_ios),
               onTap: (){
