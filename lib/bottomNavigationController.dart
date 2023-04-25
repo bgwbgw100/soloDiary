@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'commonStaticVariable.dart';
-import 'homeView.dart';
+import 'homeView/homeView.dart';
 import 'chatView.dart';
 
 class BottomNavigationController extends StatefulWidget {

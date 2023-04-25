@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:solodiary/commonStaticVariable.dart';
+import 'customColor.dart';
 
 class Intro extends StatelessWidget {
   var routeContext;
@@ -17,13 +19,13 @@ class Intro extends StatelessWidget {
 
     return
       Container(
-          color: Color(0xfffefae0),
+          color: Color(CustomColor.background),
 
           child: Column(
             children: [
               Container(
                 padding: EdgeInsets.only(top: mHeight*0.5),
-                decoration: BoxDecoration( borderRadius: BorderRadius.circular(10),color: Color(0xfffefae0),),
+                decoration: BoxDecoration( borderRadius: BorderRadius.circular(10),color: Color(CustomColor.background),),
               ),
               SizedBox(
                 width: mWidth*0.4,
