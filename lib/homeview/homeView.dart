@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:solodiary/commonStaticVariable.dart';
-import 'package:solodiary/customColor.dart';
+import 'package:solodiary/util/customColor.dart';
 import 'homeRow.dart';
-import 'package:solodiary/customColor.dart';
+import 'package:solodiary/util/customColor.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);

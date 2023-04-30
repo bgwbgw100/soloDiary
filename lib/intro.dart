@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:solodiary/commonStaticVariable.dart';
-import 'customColor.dart';
+import 'util/customColor.dart';
 
 class Intro extends StatelessWidget {
   var routeContext;

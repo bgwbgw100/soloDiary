@@ -3,7 +3,7 @@ import 'package:solodiary/bottomNavigationController.dart';
 import 'chatView.dart';
 import 'commonStaticVariable.dart';
 import 'intro.dart';
-import 'homeView.dart';
+import 'util/dateUtil.dart';
 
 void main() {
   runApp(MaterialApp(
