@@ -4,6 +4,7 @@ import 'chatView.dart';
 import 'commonStaticVariable.dart';
 import 'intro.dart';
 import 'homeView.dart';
+import 'mainTabBarController.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-      return Intro(routeContext: context,route:BottomNavigationController());
+      return Intro(routeContext: context,route:TabPage());
 
 
   }
