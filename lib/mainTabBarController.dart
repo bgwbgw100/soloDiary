@@ -23,40 +23,43 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
+
         title: Text(
           '솔로 디데이',
         ),
       ),
+      bottomNavigationBar: TabBar(
+        tabs: [
+          Container(
+            height: 80,
+            alignment: Alignment.center,
+            child: Icon(Icons.home_filled),
+          ),
+          Container(
+            height: 80,
+            alignment: Alignment.center,
+            child: Icon(Icons.chat_bubble),
+          ),
+        ],
+        indicator: BoxDecoration(
+          border: Border.all(width: 3,color: Colors.black),
+        ),
+
+        labelColor: Colors.black,
+        unselectedLabelColor: Colors.grey,
+        controller: _tabController,
+      ),
       body: Column(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(),
-            ),
-            child: TabBar(
-              tabs: [
-                Container(
-                  height: 80,
-                  alignment: Alignment.center,
-                  child: Icon(Icons.home_filled),
-                ),
-                Container(
-                  height: 80,
-                  alignment: Alignment.center,
-                  child: Icon(Icons.chat_bubble),
-                ),
-              ],
-              indicator: BoxDecoration(
-                border: Border.all(width: 3,color: Colors.black),
-              ),
-
-              labelColor: Colors.black,
-              unselectedLabelColor: Colors.grey,
-              controller: _tabController,
-            ),
-          ),
+          // Container(
+          //   decoration: BoxDecoration(
+          //     border: Border.all(),
+          //   ),
+          //   child:
+          // ),
           Expanded(
             child: TabBarView(
               controller: _tabController,
