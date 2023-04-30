@@ -4,7 +4,6 @@ import 'chatView.dart';
 import 'commonStaticVariable.dart';
 import 'intro.dart';
 import 'mainTabBarController.dart';
-import 'util/dateUtil.dart';
 
 void main() {
   runApp(MaterialApp(

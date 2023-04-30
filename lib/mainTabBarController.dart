@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:solodiary/chatView.dart';
-import 'package:solodiary/homeView.dart';
+import 'package:solodiary/homeView/homeView.dart';
+import 'package:solodiary/scheduleView.dart';
 
 class TabPage extends StatefulWidget {
   const TabPage({Key? key}) : super(key: key);
@@ -67,7 +68,7 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
                 Container(
                   // color: Colors.yellow[200],
                   // alignment: Alignment.center,
-                  child: HomeView(),
+                  child: HomeView() //Home(),
                 ),
                 Container(
                   // color: Colors.green[200],
