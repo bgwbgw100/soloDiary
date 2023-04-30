@@ -3,6 +3,7 @@ import 'package:solodiary/bottomNavigationController.dart';
 import 'chatView.dart';
 import 'commonStaticVariable.dart';
 import 'intro.dart';
+import 'mainTabBarController.dart';
 import 'util/dateUtil.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-      return Intro(routeContext: context,route:BottomNavigationController());
+      return Intro(routeContext: context,route:TabPage());
 
 
   }
