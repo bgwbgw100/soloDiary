@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:solodiary/util/customColor.dart';
+import 'package:solodiary/util/inputDateUtil.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -91,7 +93,16 @@ class _ScheduleViewState extends State<ScheduleView> {
           child: ListTile(
             title: Text('schedule', textAlign: TextAlign.start, style: TextStyle(fontSize: 12),),
             onTap: (){
-              print('schedule click');
+              showGeneralDialog(
+                context: context,
+                barrierColor: Colors.black.withOpacity(0.5),
+                barrierDismissible: true,
+                barrierLabel: "ads" ,
+                transitionDuration: Duration(milliseconds: 200),
+                pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
+                  return MyPopupWidget();
+                },
+              );
             },
           ),
         );
@@ -126,6 +137,59 @@ class _ScheduleViewState extends State<ScheduleView> {
         ),
       );
         }*/
+    );
+  }
+}
+class MyPopupWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+
+      shape: RoundedRectangleBorder(
+
+        borderRadius: BorderRadius.circular(16.0),
+      ),
+      child: Container(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            const Text("기념일"),
+            Row(
+              children: <Widget>[
+                InputYear()
+                ,InputMon()
+              ],
+            ),
+
+            const SizedBox(height: 16.0),
+            TextFormField(
+              decoration: InputDecoration(
+                hintText: 'Enter Text',
+              ),
+            ),
+            const SizedBox(height: 16.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                TextButton(
+                  child: Text('Cancel'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                TextButton(
+                  child: Text('OK'),
+                  onPressed: () {
+                    // Perform action on OK button press
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

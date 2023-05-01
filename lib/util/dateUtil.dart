@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 class DateUtil{
@@ -34,13 +32,21 @@ class DateUtil{
   void reDate(){
     DateUtil();
   }
-/*
+
   List<String> getYearList(){
-    List<String> list = List;
-    yearList.add((_year-10).toString());
+    List<String> list = [];
+    for(int i = _year - 10 ; i <= _year + 10; i++)
+    list.add((i).toString());
+    return list;
+  }
+  List<String> getMonList(){
+    List<String> list = [];
+    for(int i = 0 ; i <= 12; i++){
+      list.add(i.toString());
+    }
+    return list;
+  }
 
-
-  }*/
 
 
 }
