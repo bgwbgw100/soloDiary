@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:solodiary/util/customColor.dart';
 import 'dateUtil.dart';
 
 class InputYear extends StatefulWidget {
@@ -18,6 +19,7 @@ class _InputYearState extends State<InputYear> {
         yearDy += details.delta.dy;
         if(yearDy <-35 ){
           yearDy =0;
+
           year = (int.parse(year)-1).toString();
           setState(() {
             year;
@@ -32,9 +34,12 @@ class _InputYearState extends State<InputYear> {
         }
       },
       child: Container(
-        width: 100,
-        height: 100,
-        child: Text(year),
+        decoration:
+        BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+            border: Border.all(color: Color(CustomColor.homeBox1),style: BorderStyle.solid)
+        ),
+        child: Center(child: Text(year)),
       ),
     );
   }
@@ -68,7 +73,9 @@ class _InputMonState extends State<InputMon> {
 
   @override
   Widget build(BuildContext context) {
+
     return GestureDetector(
+
       onVerticalDragUpdate: (details) {
         monDy += details.delta.dy;
 
@@ -89,13 +96,82 @@ class _InputMonState extends State<InputMon> {
         }
       },
       child: Container(
-        width: 100,
-        height: 100,
-        child: Text(mon),
+        decoration:
+          BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+            border: Border.all(color: Color(CustomColor.homeBox1),style: BorderStyle.solid)
+          ),
+        child: Center(child: Text(mon)) ,
       ),
     );
   }
 }
+
+class InputDay extends StatefulWidget {
+  const InputDay({Key? key}) : super(key: key);
+
+  @override
+  State<InputDay> createState() => _InputDayState();
+}
+
+class _InputDayState extends State<InputDay> {
+  double dayDy = 0;
+  String day =DateUtil().getToDay();
+  int lastDay = int.parse(DateUtil().getLastDay()) ;
+
+
+  void _strDay(int day){
+    if(day <= 0){
+      this.day = lastDay.toString();
+      return;
+    }
+    if(day <10){
+      this.day = "0"+day.toString();
+      return;
+    }
+    if(day > lastDay){
+      this.day = "01";
+      return;
+    }
+    this.day = day.toString();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    return GestureDetector(
+
+      onVerticalDragUpdate: (details) {
+        dayDy += details.delta.dy;
+
+
+        if(dayDy <-35 ){
+          dayDy =0;
+          setState(() {
+            _strDay(int.parse(day)-1);
+          });
+        }
+        if(dayDy >35 ){
+          dayDy =0;
+          setState(() {
+            _strDay(int.parse(day)+1);
+          });
+
+
+        }
+      },
+      child: Container(
+        decoration:
+        BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+            border: Border.all(color: Color(CustomColor.homeBox1),style: BorderStyle.solid)
+        ),
+        child: Center(child: Text(day)) ,
+      ),
+    );
+  }
+}
+
 
 
 
