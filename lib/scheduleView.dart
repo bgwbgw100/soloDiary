@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:solodiary/settingView.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -21,7 +22,10 @@ class _HomeState extends State<Home> {
         title: Text('App', style: TextStyle(color: Color(0xff3e8eda))),
         backgroundColor: Color(0xfffefae0),
         actions: [
-          IconButton(onPressed: (){}, icon: Icon(Icons.settings), color: Colors.black,)
+          IconButton(onPressed: (){
+            print('hihihi');
+            Navigator.push(context, MaterialPageRoute(builder: (context) => SettingView()));
+          }, icon: Icon(Icons.settings), color: Colors.black,)
         ],
       ),
       body: BackGround(),
