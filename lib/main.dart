@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:solodiary/bottomNavigationController.dart';
-import 'chatView.dart';
-import 'commonStaticVariable.dart';
+import 'chat/chatView.dart';
 import 'intro.dart';
-import 'mainTabBarController.dart';
+import 'common/mainTabBarController.dart';
 
 void main() {
   runApp(MaterialApp(

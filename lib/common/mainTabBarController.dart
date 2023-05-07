@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:solodiary/chatView.dart';
-import 'package:solodiary/homeView/homeView.dart';
-import 'package:solodiary/scheduleView.dart';
+import 'package:solodiary/chat/chatView.dart';
+import 'package:solodiary/home/homeView.dart';
+import 'package:solodiary/common/settingView.dart';
+import 'package:solodiary/util/customColor.dart';
 
 class TabPage extends StatefulWidget {
   const TabPage({Key? key}) : super(key: key);
@@ -27,10 +28,17 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
 
     return Scaffold(
       appBar: AppBar(
-
+        backgroundColor: Color(CustomColor.background),
         title: Text(
           '솔로 디데이',
+          style: TextStyle(color: Colors.black),
         ),
+        actions: [
+          IconButton(onPressed: (){
+
+            Navigator.push(context, MaterialPageRoute(builder: (context) => SettingView()));
+          }, icon: Icon(Icons.settings), color: Colors.black,)
+        ],
       ),
       bottomNavigationBar: TabBar(
         tabs: [
@@ -55,24 +63,14 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
       ),
       body: Column(
         children: [
-          // Container(
-          //   decoration: BoxDecoration(
-          //     border: Border.all(),
-          //   ),
-          //   child:
-          // ),
           Expanded(
             child: TabBarView(
               controller: _tabController,
               children: [
                 Container(
-                  // color: Colors.yellow[200],
-                  // alignment: Alignment.center,
-                  child: Home() //Home(),
+                  child: HomeView()
                 ),
                 Container(
-                  // color: Colors.green[200],
-                  // alignment: Alignment.center,
                   child: OneDay(),
                 ),
               ],

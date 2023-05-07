@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:solodiary/loginPopupVC.dart';
+import 'package:solodiary/common/loginPopupVC.dart';
+import 'package:solodiary/util/customColor.dart';
 
 
 class SettingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(title: Text("설정")),
+      backgroundColor: Color(CustomColor.background),
+      appBar: AppBar(title: Text("설정",style: TextStyle(color: Color(CustomColor.text)),)),
       body: Center(
         child: settingListView()
     )
@@ -25,7 +26,7 @@ Widget settingListView() {
       itemBuilder: (BuildContext context, int index){
         return Container(
             height: 50,
-            color: Colors.black,
+            color: Color(CustomColor.background),
             child:Row(
               children: [
                 TextButton(onPressed: (){
@@ -39,7 +40,7 @@ Widget settingListView() {
 
                     );
                   }
-                }, child: Text(entries[index],style: TextStyle(color: Colors.white),),),
+                }, child: Text(entries[index],style: TextStyle(color: Color(CustomColor.text)),),),
               ],
             )
         );
