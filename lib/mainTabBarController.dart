@@ -68,7 +68,7 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
                 Container(
                   // color: Colors.yellow[200],
                   // alignment: Alignment.center,
-                  child: HomeView() //Home(),
+                  child: Home() //Home(),
                 ),
                 Container(
                   // color: Colors.green[200],
