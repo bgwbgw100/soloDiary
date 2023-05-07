@@ -61,7 +61,7 @@ class _BackTwoState extends State<BackTwo> {
             Expanded(
                 flex: 1,
                 child: Container(
-                  color: Color(0xff123456),
+                  color: Color(0xfffefae0),
                   // height: 500,
                 )
             ),
@@ -113,6 +113,30 @@ class _BackGroundState extends State<BackGround> {
           children: [
             Expanded(
                 flex: 1,
+                child: Container(
+                  margin:  EdgeInsets.fromLTRB(20, 20, 20, 0),
+                  padding:  EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  alignment: Alignment.topLeft,
+                  child: Text('하루한말', textAlign: TextAlign.center, style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold,
+                  shadows: [Shadow(
+                    blurRadius: 2,
+                    color: Colors.grey,
+                    offset: Offset(2,2)
+                  )
+
+                  ]),),
+                )),
+            Expanded(
+                flex: 1,
+                child: Container(
+                  margin:  EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  padding:  EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  alignment: Alignment.topLeft,
+                  child: Text('하루한말을 공유해주세요!', textAlign: TextAlign.center, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w200,color: Color(
+                      0xff3a3a3a)),),
+                )),
+            Expanded(
+                flex: 10,
                 child: RoundBorder()),
             Container(
               margin: EdgeInsets.all(0),
@@ -140,7 +164,7 @@ class _RoundBorderState extends State<RoundBorder> {
     print("asdf");
 
     return Container(
-      margin:  EdgeInsets.fromLTRB(20, 70, 20, 0),
+      margin:  EdgeInsets.fromLTRB(20, 20, 20, 0),
       padding:  EdgeInsets.fromLTRB(20, 30, 20, 0),
       decoration: BoxDecoration(
         // color: Color(0xfff8f9fb),
@@ -196,7 +220,8 @@ class _ChatViewState extends State<ChatView> {
           )*/
                 boxShadow: <BoxShadow>[
                   BoxShadow(
-                      color: Color(0xffffc8dd),
+                      color: Color(0xff3e8eda),
+                   //   color: Color(0xffffc8dd),
                       //   color: Color(0xff123456),
                       blurRadius: 0,
                       offset: Offset(-4, 4)
@@ -280,7 +305,7 @@ class _InputFieldState extends State<InputField> {
                 child: Row(
                     children: [
                       InkWell(
-                        child: Image.asset('images/btnbtn.png',width:60,height: 60),
+                        child: Image.asset('btnbtn.png',width:60,height: 60),
                       )
                       /* IconButton(onPressed: (){
                       print('clickaa');
