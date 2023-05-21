@@ -7,7 +7,7 @@ class LoginPopupVC extends StatelessWidget {
     return AlertDialog(
       content: Container(
         color: Colors.white,
-        height: 180,
+        height: 300,
         width: 300,
         child: Column(
           children: [
@@ -17,18 +17,14 @@ class LoginPopupVC extends StatelessWidget {
             Spacer(
               flex: 1,
             ),
-            Row(
-              children: [
-                Spacer(
-                  flex: 5,
-                ),
+
+
                 GestureDetector(
                     child: Container(
-                        width: 100,
+                        width: 200,
                         height: 50,
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white, width: 2),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(12),
                           color: Colors.black,
                           image: DecorationImage(
                               image: AssetImage("/naverLogin.png"),
@@ -37,44 +33,35 @@ class LoginPopupVC extends StatelessWidget {
                     onTap: () {
                       print("you clicked me");
                     }),
-                Spacer(
-                  flex: 3,
-                ),
+            Spacer(
+              flex: 1,
+            ),
+
                 GestureDetector(
                     child: Container(
-                        width: 100,
+                        width: 200,
                         height: 50,
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white, width: 2),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(12),
                           color: Colors.black,
                           image: DecorationImage(
-                              image: AssetImage("/KaKaoLogin.png"),
+                              image: AssetImage("/KaKaoLoginMedium.png"),
                               fit: BoxFit.fill),
                         )),
                     onTap: () {
                       print("you clicked me");
                     }),
-                Spacer(
-                  flex: 5,
-                ),
-              ],
-            ),
             Spacer(
               flex: 1,
             ),
-            Row(
-              children: [
-                Spacer(
-                  flex: 5,
-                ),
+
+
                 GestureDetector(
                     child: Container(
-                        width: 100,
+                        width: 200,
                         height: 50,
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white, width: 2),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.all(Radius.circular(12)),
                           color: Colors.black,
                           image: DecorationImage(
                               image: AssetImage("/googleLogin.png"),
@@ -83,16 +70,16 @@ class LoginPopupVC extends StatelessWidget {
                     onTap: () {
                       print("you clicked me");
                     }),
-                Spacer(
-                  flex: 3,
-                ),
+            Spacer(
+              flex: 1,
+            ),
+
                 GestureDetector(
                     child: Container(
-                        width: 100,
+                        width: 200,
                         height: 50,
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white, width: 2),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(12),
                           color: Colors.black,
                           image: DecorationImage(
                               image: AssetImage("/facebookLogin.png"),
@@ -101,15 +88,9 @@ class LoginPopupVC extends StatelessWidget {
                     onTap: () {
                       print("you clicked me");
                     }),
-                Spacer(
-                  flex: 5,
-                ),
+
               ],
-            ),
-            Spacer(
-              flex: 2,
-            )
-          ],
+
         ),
       ),
       actions: [
