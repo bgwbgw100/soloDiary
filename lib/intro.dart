@@ -50,7 +50,6 @@ class Intro extends StatelessWidget {
                 child: TextButton(
                     child: Text(toDay,style: TextStyle(fontSize: fSize))
                     ,onPressed: (){
-
                 }),
               )
             ],

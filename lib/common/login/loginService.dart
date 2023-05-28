@@ -1,46 +1,38 @@
 import 'dart:collection';
 
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart' as kakao;
+import 'package:provider/provider.dart';
+import 'package:solodiary/common/login/LoginProvider.dart';
+import 'package:uuid/uuid.dart';
+import 'package:uuid/uuid_util.dart';
 import 'fireBaseAuthRemote.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-
 class LoginService {
-  final FireBaseAuthRemote  _fireBaseAuthRemoteDataSource = FireBaseAuthRemote();
+  static LoginService? _instance;
 
-   void  kakaoLogin  () async {
+  _LoginService() {}
 
-    try {
-      bool isInstalled = await kakao.isKakaoTalkInstalled();
-      kakao.OAuthToken token = await kakao.UserApi.instance.loginWithKakaoTalk();
-      kakao.User user = await kakao.UserApi.instance.me();
-      Map<String,dynamic> userMap = {
-        "uid": user.id.toString()
-        ,"email": user.kakaoAccount!.email
-      };
-
-    //  var final  token = await _fireBaseAuthRemote.createCustomToken();
-      print('카카오톡으로 로그인 성공 ${token.accessToken}');
-      print("user id = " +user.id.toString());
-    } catch (error) {
-      print('카카오톡으로 로그인 실패 $error');
-    }
+  static LoginService getInstance() {
+    _instance ??= LoginService();
+    return _instance!;
   }
-  void kakaoLogin2 () async{
 
+  final FireBaseAuthRemote _fireBaseAuthRemoteDataSource = FireBaseAuthRemote();
 
-    try{
-      kakao.OAuthToken token = await kakao.UserApi.instance.loginWithKakaoAccount();
-      print("object0");
+  kakaoLogin() async {
+    try {
+      kakao.OAuthToken token =
+          await kakao.UserApi.instance.loginWithKakaoAccount();
       kakao.User user = await kakao.UserApi.instance.me();
 
-      kakao.`
+      print(user.kakaoAccount?.emailNeedsAgreement);
+
       List<String> scopes = [];
+
       if (user.kakaoAccount?.emailNeedsAgreement == true) {
-
         scopes.add('account_email');
-
       }
 
       if (scopes.length > 0) {
@@ -55,33 +47,43 @@ class LoginService {
         }
         try {
           user = await kakao.UserApi.instance.me();
-
-          
         } catch (error) {
           print('사용자 정보 요청 실패 $error');
         }
       }
-      final customToken = await _fireBaseAuthRemoteDataSource.createCustomToken({
+      final customToken =
+          await _fireBaseAuthRemoteDataSource.createCustomToken({
         'uid': user.id.toString(),
-        'emali' : user..kakaoAccount?.email,
+        'emali': user.kakaoAccount?.email.toString(),
       });
 
-      print(customToken);
       await FirebaseAuth.instance.signInWithCustomToken(customToken);
 
-      print("user id = " +user.id.toString());
       print('카카오계정으로 로그인 성공 ${token.accessToken}');
     } catch (error) {
       print('카카오계정으로 로그인 실패 $error');
     }
   }
 
-  void logout() async{
-     try{
-       await kakao.UserApi.instance.unlink();
-     }catch(error){
-       print('카카오로그아웃 실패 $error');
-     }
+  void logout() async {
+    try {
+      await kakao.UserApi.instance.unlink();
+      await FirebaseAuth.instance.signOut();
+      LoginProvider.getInstance().logoutSetProvider();
+
+    } catch (error) {
+      print('로그아웃 실패 $error');
+    }
   }
 
+  void login(login) async {
+    await login();
+
+    if(FirebaseAuth.instance.currentUser?.displayName == null){
+      Uuid uuid = Uuid();
+      FirebaseAuth.instance.currentUser?.updateDisplayName(uuid.v1());
+    }
+
+    LoginProvider.getInstance().loginSetProvider();
+  }
 }
