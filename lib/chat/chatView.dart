@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:solodiary/fireService.dart';
 
 class OneDay extends StatefulWidget {
   const OneDay({super.key});
@@ -9,6 +11,16 @@ class OneDay extends StatefulWidget {
 
 class _OneDayState extends State<OneDay> {
   // This widget is the root of your application.
+
+  FireService service = FireService();
+
+  @override
+  void initState() {
+    super.initState();
+    service = FireService();
+    service.readListData();
+  }
+
 
   var tab = 0;
 
@@ -24,7 +36,7 @@ class _OneDayState extends State<OneDay> {
       body:Stack(
         children: <Widget>[
           BackTwo(),
-          BackGround(),
+          BackGround(service: service),
         ],
 
       ),
@@ -81,13 +93,31 @@ class _BackTwoState extends State<BackTwo> {
 
 
 class BackGround extends StatefulWidget {
-  const BackGround({Key? key}) : super(key: key);
+  const BackGround({Key? key, this.service}) : super(key: key);
 
+  final service;
   @override
   State<BackGround> createState() => _BackGroundState();
 }
 
 class _BackGroundState extends State<BackGround> {
+  // var list = <String>[];
+
+  List<Map<String, dynamic>> list = [];
+
+
+
+
+  @override
+  void initState() {
+    super.initState();
+
+    list = widget.service.chatItem;
+  //  print('backgroudstate ${FireService().readListData()}');
+    // list = FireService().readListData() as List<String>;
+    print('sidjfils $list');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -137,10 +167,12 @@ class _BackGroundState extends State<BackGround> {
                 )),
             Expanded(
                 flex: 10,
+               //hild: RoundBorder(list: list)),
                 child: RoundBorder()),
             Container(
               margin: EdgeInsets.all(0),
               height: 60,
+             // child: InputField(list: list),
               child: InputField(),
             )
           ],
@@ -150,14 +182,21 @@ class _BackGroundState extends State<BackGround> {
 }
 
 class RoundBorder extends StatefulWidget {
+//  const RoundBorder({Key? key, this.list}) : super(key: key);
   const RoundBorder({Key? key}) : super(key: key);
-
+  // final list;
 
   @override
   State<RoundBorder> createState() => _RoundBorderState();
 }
 
 class _RoundBorderState extends State<RoundBorder> {
+
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
 
@@ -175,6 +214,7 @@ class _RoundBorderState extends State<RoundBorder> {
               topRight: Radius.circular(30)
           )
       ),
+    //  child: ChatView(list: widget.list),
       child: ChatView(),
     );
   }
@@ -183,8 +223,9 @@ class _RoundBorderState extends State<RoundBorder> {
 
 
 class ChatView extends StatefulWidget {
+ // const ChatView({Key? key, this.list}) : super(key: key);
   const ChatView({Key? key}) : super(key: key);
-
+  // final list;
 
   @override
   State<ChatView> createState() => _ChatViewState();
@@ -199,6 +240,7 @@ class _ChatViewState extends State<ChatView> {
 
   @override
   Widget build(BuildContext context) {
+   // return ListView.builder(itemCount: widget.list.length,
     return ListView.builder(itemCount: 3,
         itemBuilder: (c, i){
           return Container(
@@ -253,7 +295,9 @@ class _ChatViewState extends State<ChatView> {
 }
 
 class InputField extends StatefulWidget {
+  //const InputField({Key? key, this.list}) : super(key: key);
   const InputField({Key? key}) : super(key: key);
+  // final list;
 
   @override
   State<InputField> createState() => _InputFieldState();
