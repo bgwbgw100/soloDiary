@@ -1,5 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:solodiary/chat/chatView.dart';
+import 'package:solodiary/common/login/LoginProvider.dart';
+import 'package:solodiary/common/login/tap/widget/loginWidget.dart';
+import 'package:solodiary/common/login/tap/widget/menuDropdownButton.dart';
 import 'package:solodiary/home/homeView.dart';
 import 'package:solodiary/common/settingView.dart';
 import 'package:solodiary/util/customColor.dart';
@@ -12,6 +17,7 @@ class TabPage extends StatefulWidget {
 }
 
 class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
+
   late TabController _tabController;
 
   @override
@@ -25,6 +31,8 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final loginProvider = Provider.of<LoginProvider>(context);
+
 
     return Scaffold(
       appBar: AppBar(
@@ -34,10 +42,14 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
           style: TextStyle(color: Colors.black),
         ),
         actions: [
-          IconButton(onPressed: (){
+          loginProvider.isLoggedIn ?
+          MenuDropdownButton(FirebaseAuth.instance.currentUser?.displayName ?? "에러") :
+          LoginButtonWidget()
+
+         /* IconButton(onPressed: (){
 
             Navigator.push(context, MaterialPageRoute(builder: (context) => SettingView()));
-          }, icon: Icon(Icons.settings), color: Colors.black,)
+          }, icon: Icon(Icons.settings), color: Colors.black,)*/
         ],
       ),
       bottomNavigationBar: TabBar(
