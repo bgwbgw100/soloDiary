@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:solodiary/mainView/mainViewService.dart';
 import 'package:solodiary/util/customColor.dart';
 import 'package:solodiary/util/dateUtil.dart';
 import 'package:solodiary/util/inputDateUtil.dart';
@@ -66,7 +65,7 @@ class PopupWidget extends StatelessWidget {
                 TextButton(
                   child: Text('OK'),
                   onPressed: () {
-                    MainViewService.getInstance().save();
+                    //MainViewService.getInstance().save();
                     Navigator.of(context).pop();
                   },
                 ),

@@ -55,8 +55,6 @@ class LoginPopupVC extends StatelessWidget {
                       LoginService loginService = LoginService.getInstance();
                       loginService.login(loginService.kakaoLogin);
 
-
-
                     }),
             Spacer(
               flex: 1,
