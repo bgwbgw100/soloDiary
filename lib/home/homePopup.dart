@@ -11,24 +11,8 @@ class HomePopup extends StatefulWidget {
   State<HomePopup> createState() => _HomePopupState();
 }
 
+
 class _HomePopupState extends State<HomePopup> {
-  double yearDy = 0;
-
-  String year = DateUtil().getYear();
-
-  void selectYear() {
-
-  }
-
-  Future<void> createNewAnniversary(String myTitle,String? myOverview,String myWdate) async {
-    var userModel = UserNoneLogin(name: DateUtil.makeUUID(), overview:myOverview ,title: myTitle, wdate:myWdate ,udate: DateTime.now());
-    await DBHelperCrudRepository.create(userModel);
-    update();
-  }
-
-  void update() => setState(() {});
-
-class HomePopup extends StatelessWidget {
   String year = '';
   String mon = '';
   String day = '';
@@ -42,7 +26,22 @@ class HomePopup extends StatelessWidget {
     this.day = day;
   }
 
+  void selectYear() {
 
+  }
+
+  Future<void> createNewAnniversary(String myTitle, String? myOverview,
+      String myWdate) async {
+    var userModel = UserNoneLogin(name: DateUtil.makeUUID(),
+        overview: myOverview,
+        title: myTitle,
+        wdate: myWdate,
+        udate: DateTime.now());
+    await DBHelperCrudRepository.create(userModel);
+    update();
+  }
+
+  void update() => setState(() {});
 
   @override
   Widget build(BuildContext context) {
