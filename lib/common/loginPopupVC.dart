@@ -29,7 +29,7 @@ class LoginPopupVC extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                           color: Colors.black,
                           image: DecorationImage(
-                              image: AssetImage("/naverLogin.png"),
+                              image: AssetImage("assets/naverLogin.png"),
                               fit: BoxFit.fill),
                         )),
                     onTap: () {
@@ -47,7 +47,7 @@ class LoginPopupVC extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                           color: Colors.black,
                           image: DecorationImage(
-                              image: AssetImage("/KaKaoLoginMedium.png"),
+                              image: AssetImage("assets/kakaoLoginMedium.png"),
                               fit: BoxFit.fill),
                         )),
                     onTap: () {
@@ -67,7 +67,7 @@ class LoginPopupVC extends StatelessWidget {
                           borderRadius: BorderRadius.all(Radius.circular(12)),
                           color: Colors.black,
                           image: DecorationImage(
-                              image: AssetImage("/googleLogin.png"),
+                              image: AssetImage("assets/googleLogin.png"),
                               fit: BoxFit.fill),
                         )),
                     onTap: () {
@@ -85,7 +85,7 @@ class LoginPopupVC extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                           color: Colors.black,
                           image: DecorationImage(
-                              image: AssetImage("/facebookLogin.png"),
+                              image: AssetImage("assets/facebookLogin.png"),
                               fit: BoxFit.fill),
                         )),
                     onTap: () {

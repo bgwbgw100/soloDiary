@@ -72,8 +72,10 @@ flutter:
   assets:
     - assets/facebookLogin.png
     - assets/googleLogin.png
-    - assets/KaKaoLogin.png
+    - assets/kakaoLogin.png
+    - assets/kakaoLoginMedium.png
     - assets/naverLogin.png
+    - assets/btnbtn.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

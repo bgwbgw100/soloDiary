@@ -60,6 +60,15 @@ class FireService {
     );
   }
 
+  Future<List<DocumentSnapshot>> fetchData() async {
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+        .collection('OneDayList')
+        .orderBy('date', descending: true)
+        .get();
+
+    return querySnapshot.docs;
+  }
+
 
   final collectionsReference = FirebaseFirestore.instance.collection('OneDayList');
 
