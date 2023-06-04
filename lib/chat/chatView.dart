@@ -1,6 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:solodiary/fireService.dart';
+import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
+import 'package:solodiary/common/login/loginService.dart';
+import 'package:solodiary/common/login/loginProvider.dart';
+import 'package:firebase_auth/firebase_auth.dart'as fire;
+
+import 'package:kakao_flutter_sdk_user/src/model/user.dart' as kakao1;
+import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart' as kakao2;
+
 
 class OneDay extends StatefulWidget {
   const OneDay({super.key});
@@ -14,6 +22,13 @@ class _OneDayState extends State<OneDay> {
 
   FireService service = FireService();
 
+
+  /*void getUserId() async {
+    kakao.User user = await kakao.UserApi.instance.me();
+
+  }*/
+
+//  String user = "";
   @override
   void initState() {
     super.initState();
@@ -118,6 +133,23 @@ class _BackGroundState extends State<BackGround> {
     print('sidjfils $list');
   }
 
+
+
+  void addData(String chat, String uid){
+    setState(() {
+     // FirebaseFirestore.instance.collection('OneDayList').add({
+      FirebaseFirestore.instance.collection('OneDayList').doc(uid).set({
+        'chat': chat,
+        'date': DateTime.now().toString(),
+        'user': uid
+      }).then((value) =>
+          print('Data added successfully')
+      ).catchError((error) =>
+          print('Failed to add data: $error'));
+    });
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -173,7 +205,7 @@ class _BackGroundState extends State<BackGround> {
               margin: EdgeInsets.all(0),
               height: 60,
              // child: InputField(list: list),
-              child: InputField(),
+              child: InputField(addData: addData),
             )
           ],
         )
@@ -203,7 +235,7 @@ class _RoundBorderState extends State<RoundBorder> {
     print("asdf");
 
     return Container(
-      margin:  EdgeInsets.fromLTRB(20, 20, 20, 0),
+      margin:  EdgeInsets.fromLTRB(20, 0, 20, 0),
       padding:  EdgeInsets.fromLTRB(20, 30, 20, 0),
       decoration: BoxDecoration(
         // color: Color(0xfff8f9fb),
@@ -215,7 +247,23 @@ class _RoundBorderState extends State<RoundBorder> {
           )
       ),
     //  child: ChatView(list: widget.list),
-      child: ChatView(),
+      child: FutureBuilder<List<DocumentSnapshot>>(
+        future: FireService().fetchData(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          }
+
+          if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
+          }
+
+          List<DocumentSnapshot>? data = snapshot.data;
+          return ChatView(data: data);
+        },
+      )
+
+     // ChatView(),
     );
   }
 }
@@ -224,8 +272,9 @@ class _RoundBorderState extends State<RoundBorder> {
 
 class ChatView extends StatefulWidget {
  // const ChatView({Key? key, this.list}) : super(key: key);
-  const ChatView({Key? key}) : super(key: key);
+  const ChatView({Key? key, this.data}) : super(key: key);
   // final list;
+  final data;
 
   @override
   State<ChatView> createState() => _ChatViewState();
@@ -241,13 +290,16 @@ class _ChatViewState extends State<ChatView> {
   @override
   Widget build(BuildContext context) {
    // return ListView.builder(itemCount: widget.list.length,
-    return ListView.builder(itemCount: 3,
+    return ListView.builder(itemCount: widget.data.length,
         itemBuilder: (c, i){
+        Map<String, dynamic> itemData = widget.data[i].data();
+
+
           return Container(
             width: 650,
             height: 50,
 
-            margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+            margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
             decoration: BoxDecoration(
                 color: Color(0xffffffff),
                 border: Border(),
@@ -282,7 +334,7 @@ class _ChatViewState extends State<ChatView> {
             ),
             child: ListTile(
               // title: Text('밤이 되면 생각이 많아진다.', textAlign: TextAlign.justify, style: TextStyle(fontSize: 12, fontFamily: 'LeferiPoint', fontWeight: FontWeight.w700),),
-              title: Text('밤이 되면 생각이 많아진다.', textAlign: TextAlign.justify, style: TextStyle(fontSize: 12),),
+              title: Text(itemData['chat'], textAlign: TextAlign.justify, style: TextStyle(fontSize: 12),),
               //   title: Text('봄봄봄', textAlign: TextAlign.justify, style: TextStyle(fontFamily: )),
               //  trailing: Icon(Icons.arrow_forward_ios),
               onTap: (){
@@ -296,8 +348,9 @@ class _ChatViewState extends State<ChatView> {
 
 class InputField extends StatefulWidget {
   //const InputField({Key? key, this.list}) : super(key: key);
-  const InputField({Key? key}) : super(key: key);
+  const InputField({Key? key, this.addData}) : super(key: key);
   // final list;
+  final addData;
 
   @override
   State<InputField> createState() => _InputFieldState();
@@ -308,8 +361,41 @@ class InputField extends StatefulWidget {
 class _InputFieldState extends State<InputField> {
 
   var text = "";
+  var inputData = TextEditingController();
+
+  void dismissKeyboard(BuildContext context) {
+    FocusScope.of(context).unfocus();
+  }
+
+/*  Future<String> test() async {
+    kakao.User user = await kakao.UserApi.instance.me();
+    String userId = user.id.toString();
+    return userId;
+  }*/
+
+  String getUserId() {
+    fire.FirebaseAuth auth = fire.FirebaseAuth.instance;
+    fire.User? fireUser = auth.currentUser;
+
+    if (fireUser != null) {
+      String uid = fireUser.uid;
+      return uid;
+    } else {
+      //사용자가 인증되지 않은 경우 처리할 내용
+      return "null";
+    }
+  }
+  String userId = "";
+
+  void printId() {
+    userId = getUserId();
+    print('useridididi'+userId);
+  }
+
   @override
   Widget build(BuildContext context) {
+
+
     return Container(
       height: 70,
       padding: EdgeInsets.fromLTRB(20, 10, 10, 10),
@@ -331,6 +417,15 @@ class _InputFieldState extends State<InputField> {
                   borderRadius: BorderRadius.circular(15)
               ),
               child: TextField(
+                controller: inputData,
+                textInputAction: TextInputAction.done,
+                onEditingComplete: (){
+                  printId();
+                  widget.addData(inputData.text, userId);
+                  print("btnbtnClick");
+                  inputData.clear();
+                  dismissKeyboard(context);
+                },
                 decoration: InputDecoration(
                     labelText: '하루한말',
                     border: InputBorder.none,
@@ -348,9 +443,17 @@ class _InputFieldState extends State<InputField> {
                 padding: EdgeInsets.all(0),
                 child: Row(
                     children: [
-                      InkWell(
+                      IconButton(onPressed: (){
+                        printId();
+                        widget.addData(inputData.text, userId);
+                        print("btnbtnClick");
+                      //  print("uiduid  ${getUserId}");
+                        inputData.clear();
+                        dismissKeyboard(context);
+                      }, icon: Image.asset('assets/btnbtn.png',width:60,height: 60))
+                      /*InkWell(
                         child: Image.asset('btnbtn.png',width:60,height: 60),
-                      )
+                      )*/
                       /* IconButton(onPressed: (){
                       print('clickaa');
                     }, icon: Icon(Icons.send_outlined))*/
