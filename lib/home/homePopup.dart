@@ -1,6 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:solodiary/DB/dbHelper.dart';
+import 'package:solodiary/DB/dbHelperCrudRepository.dart';
+import 'package:solodiary/DB/noneLoginUserModel.dart';
 import 'package:solodiary/util/customColor.dart';
+import 'package:solodiary/util/dateUtil.dart';
 import 'package:solodiary/util/inputDateUtil.dart';
+
+class HomePopup extends StatefulWidget {
+  @override
+  State<HomePopup> createState() => _HomePopupState();
+}
+
+class _HomePopupState extends State<HomePopup> {
+  double yearDy = 0;
+
+  String year = DateUtil().getYear();
+
+  void selectYear() {
+
+  }
+
+  Future<void> createNewAnniversary(String myTitle,String? myOverview,String myWdate) async {
+    var userModel = UserNoneLogin(name: DateUtil.makeUUID(), overview:myOverview ,title: myTitle, wdate:myWdate ,udate: DateTime.now());
+    await DBHelperCrudRepository.create(userModel);
+    update();
+  }
+
+  void update() => setState(() {});
 
 class HomePopup extends StatelessWidget {
   String year = '';
@@ -68,12 +94,8 @@ class HomePopup extends StatelessWidget {
                 TextButton(
                   child: Text('OK'),
                   onPressed: () {
-                    print(year);
-                    print(mon);
-
-                    print(day);
-
-                    // Navigator.of(context).pop();
+                    // Perform action on OK button press
+                    Navigator.of(context).pop();
                   },
                 ),
               ],

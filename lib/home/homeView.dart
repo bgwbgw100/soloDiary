@@ -18,7 +18,19 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: (){
+          print('test');
+          showGeneralDialog(
+            context: context,
+            barrierColor: Colors.black.withOpacity(0.5),
+            barrierDismissible: true,
+            barrierLabel: "ads" ,
+            transitionDuration: Duration(milliseconds: 200),
+            pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
+              return HomePopup();
+            },
+          );
+        },
         child: Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,

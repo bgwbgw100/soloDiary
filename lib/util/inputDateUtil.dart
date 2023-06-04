@@ -101,6 +101,8 @@ class _InputMonState extends State<InputMon> {
           setState(() {
             _strMon(int.parse(mon)+1);
           });
+
+
         }
       },
       child: Container(
@@ -161,12 +163,12 @@ class _InputDayState extends State<InputDay> {
             _strDay(int.parse(day)-1);
           });
         }
-        if(dayDy >35 ){
-          dayDy =0;
+        if(dayDy >35 ) {
+          dayDy = 0;
           setState(() {
-            _strDay(int.parse(day)+1);
+            _strDay(int.parse(day) + 1);
           });
-        }
+         }
 
       },
       child: Container(

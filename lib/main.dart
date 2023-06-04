@@ -8,19 +8,21 @@ import 'package:solodiary/firebase_options.dart';
 import 'chat/chatView.dart';
 import 'intro.dart';
 import 'common/mainTabBarController.dart';
+import 'package:solodiary/DB/dbHelper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  DBHelper();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  // print(await  KakaoSdk.origin);
+
 
   KakaoSdk.init(
       nativeAppKey: '96e9047419b88a0bfed0295288ee2296',
       javaScriptAppKey: '4ea8ab4f350aacf363b8da7c20cceb36');
-
+  print(await  KakaoSdk.origin);
   runApp(
     ChangeNotifierProvider(
       create: (context) => LoginProvider.getInstance(),
