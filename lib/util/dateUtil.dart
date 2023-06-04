@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 class DateUtil{
   int _toDay=0;
@@ -11,6 +12,10 @@ class DateUtil{
     this._toMonth = date.month;
     this._year = date.year;
     this._lastDay = DateTime(date.year,date.month+1,0).day;
+  }
+
+  static String makeUUID() {
+    return const Uuid().v1();
   }
 
   String getToDay(){

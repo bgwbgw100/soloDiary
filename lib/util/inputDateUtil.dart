@@ -5,6 +5,7 @@ import 'dateUtil.dart';
 class InputYear extends StatefulWidget {
   const InputYear({Key? key}) : super(key: key);
 
+
   @override
   State<InputYear> createState() => _InputYearState();
 }
@@ -12,6 +13,9 @@ class InputYear extends StatefulWidget {
 class _InputYearState extends State<InputYear> {
   double yearDy = 0;
   String year = DateUtil().getYear();
+
+
+
   @override
   Widget build(BuildContext context) {
     return  GestureDetector(
@@ -30,9 +34,12 @@ class _InputYearState extends State<InputYear> {
           year = (int.parse(year)+1).toString();
           setState(() {
             year;
+            print(year);
+
           });
         }
       },
+
       child: Container(
         decoration:
         BoxDecoration(
