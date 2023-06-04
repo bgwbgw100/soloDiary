@@ -3,6 +3,21 @@ import 'package:solodiary/util/customColor.dart';
 import 'package:solodiary/util/inputDateUtil.dart';
 
 class HomePopup extends StatelessWidget {
+  String year = '';
+  String mon = '';
+  String day = '';
+  getYear(year){
+    this.year = year;
+  }
+  getMon(mon){
+    this.mon = mon;
+  }
+  getDay(day){
+    this.day = day;
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -19,9 +34,9 @@ class HomePopup extends StatelessWidget {
             const Text("기념일",style: TextStyle(height: 0)),
             Row(
               children: <Widget>[
-                Expanded(child: Center(child: InputYear()),flex: 3),
-                Expanded(child: Center(child: InputMon()) ,flex: 2,),
-                Expanded(child: Center(child: InputDay()) ,flex: 2,),
+                Expanded(child: Center(child: InputYear(getYear)),flex: 3),
+                Expanded(child: Center(child: InputMon(getMon)) ,flex: 2,),
+                Expanded(child: Center(child: InputDay(getDay)) ,flex: 2,),
                 Expanded(child: SizedBox(),flex: 8,),
               ],
             ),
@@ -53,8 +68,12 @@ class HomePopup extends StatelessWidget {
                 TextButton(
                   child: Text('OK'),
                   onPressed: () {
-                    // Perform action on OK button press
-                    Navigator.of(context).pop();
+                    print(year);
+                    print(mon);
+
+                    print(day);
+
+                    // Navigator.of(context).pop();
                   },
                 ),
               ],

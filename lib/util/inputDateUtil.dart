@@ -3,7 +3,8 @@ import 'package:solodiary/util/customColor.dart';
 import 'dateUtil.dart';
 
 class InputYear extends StatefulWidget {
-  const InputYear({Key? key}) : super(key: key);
+  InputYear(this.getYear,{Key? key}) : super(key: key);
+  var getYear;
 
   @override
   State<InputYear> createState() => _InputYearState();
@@ -12,8 +13,13 @@ class InputYear extends StatefulWidget {
 class _InputYearState extends State<InputYear> {
   double yearDy = 0;
   String year = DateUtil().getYear();
+
+
   @override
   Widget build(BuildContext context) {
+    widget.getYear(year);
+
+
     return  GestureDetector(
       onVerticalDragUpdate: (details) {
         yearDy += details.delta.dy;
@@ -32,6 +38,7 @@ class _InputYearState extends State<InputYear> {
             year;
           });
         }
+
       },
       child: Container(
         decoration:
@@ -45,7 +52,8 @@ class _InputYearState extends State<InputYear> {
   }
 }
 class InputMon extends StatefulWidget {
-  const InputMon({Key? key}) : super(key: key);
+  InputMon(this.getMon,{Key? key}) : super(key: key);
+  var getMon;
 
   @override
   State<InputMon> createState() => _InputMonState();
@@ -73,10 +81,12 @@ class _InputMonState extends State<InputMon> {
 
   @override
   Widget build(BuildContext context) {
+    widget.getMon(mon);
 
     return GestureDetector(
 
-      onVerticalDragUpdate: (details) {
+
+        onVerticalDragUpdate: (details) {
         monDy += details.delta.dy;
 
 
@@ -91,8 +101,6 @@ class _InputMonState extends State<InputMon> {
           setState(() {
             _strMon(int.parse(mon)+1);
           });
-
-
         }
       },
       child: Container(
@@ -108,7 +116,8 @@ class _InputMonState extends State<InputMon> {
 }
 
 class InputDay extends StatefulWidget {
-  const InputDay({Key? key}) : super(key: key);
+  InputDay(this.getDay,{Key? key}) : super(key: key);
+  var getDay;
 
   @override
   State<InputDay> createState() => _InputDayState();
@@ -138,6 +147,7 @@ class _InputDayState extends State<InputDay> {
 
   @override
   Widget build(BuildContext context) {
+    widget.getDay(day);
 
     return GestureDetector(
 
@@ -156,9 +166,8 @@ class _InputDayState extends State<InputDay> {
           setState(() {
             _strDay(int.parse(day)+1);
           });
-
-
         }
+
       },
       child: Container(
         decoration:
